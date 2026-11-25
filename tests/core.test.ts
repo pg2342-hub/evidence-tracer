@@ -80,6 +80,11 @@ describe("guard", () => {
     expect(t.status).toBe("supported");
     expect(t.cite.ok).toBe(true);
   });
+  it("keeps the cite when a quote is on the cited page and another page restates the fact", () => {
+    const t = guard(brief[0], rec.index.passages, reply({ verdict: "supported", support: [{ passage_id: pid(3), quote: "Neeva shut down in May 2023 and was acquired" }, { passage_id: pid(2), quote: "Google paid out a total of $26.3 billion in revenue share" }], discrepancy: "", suggested_text: "", note: "" }), rec.byPage, "m");
+    expect(t.status).toBe("supported");
+    expect(t.links.map((l) => l.page)).toEqual([2, 3]);
+  });
   it("downgrades 'supported' to needs_review when the quote is not in the record", () => {
     const t = guard(brief[0], shown(0), reply({ verdict: "supported", support: [{ passage_id: pid(2), quote: "Google paid a total of $26.3 billion to its partners in 2021" }], discrepancy: "", suggested_text: "", note: "" }), rec.byPage, "m");
     expect(t.status).toBe("needs_review");

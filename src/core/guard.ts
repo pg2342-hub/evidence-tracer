@@ -7,7 +7,8 @@ import type { ModelReply } from "./tracer.js";
  * Code decides what the reviewer sees. The model proposes; nothing here trusts it:
  * - a quote counts only if it is on the page of the passage it names, word for word;
  * - "supported" with no quote that checks out becomes needs_review;
- * - the cite check compares the brief's pages with the pages of the quotes that checked out.
+ * - the cite is right when at least one quote that checked out is on a page the brief cites. The opinion
+ *   restates many facts, so quotes from other pages are kept as corroboration, listed after the cited ones.
  * Every status is still a proposal for a lawyer to accept, fix or reject.
  */
 export function guard(a: Assertion, shown: Passage[], reply: ModelReply, pages: Map<number, Page>, model: string): Traced {
@@ -28,8 +29,10 @@ export function guard(a: Assertion, shown: Passage[], reply: ModelReply, pages: 
     }
   }
 
+  const onCite = (pg: number) => !!a.cite?.includes(pg);
+  links.sort((x, y) => Number(onCite(y.page)) - Number(onCite(x.page)) || x.page - y.page);
   const supportPages = [...new Set(links.map((l) => l.page))].sort((x, y) => x - y);
-  const citeOk = !!a.cite && supportPages.length > 0 && supportPages.every((pg) => a.cite!.includes(pg));
+  const citeOk = supportPages.some(onCite);
   let status: Status;
   if (!p) {
     status = "needs_review";

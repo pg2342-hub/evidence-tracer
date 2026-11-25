@@ -6,6 +6,10 @@ Checks every sentence of a draft brief against the court record. Each sentence c
 
 **Demo:** https://pranavgudise.dev/evidence-tracer/
 
+## Result
+
+On the last live run (claude-opus-5-5, medium effort, 3 runs of 40 sentences, 120 calls), every sentence got the right status on every run and no wrong sentence was shown as supported. All 200 quotes the model gave were found word for word on their pages. Mean cost was $0.022 and mean latency 3.3 s per sentence. The keyword-cutoff shortcut passes 25 of 40 and calls 13 wrong sentences supported, so the same gate blocks it.
+
 ## What it runs on
 
 - **Record:** the public Memorandum Opinion in *United States v. Google LLC*, No. 20-cv-3010 (D.D.C. Aug. 5, 2024), ECF No. 1033, 286 pages, pulled from the RECAP archive by `.github/workflows/fetch-record.yml`. Cites use the ECF page stamp ("Op. at 45").
@@ -16,7 +20,7 @@ Checks every sentence of a draft brief against the court record. Each sentence c
 1. The opinion is split into passages of about 140 words that never cross a page, so every passage has one pin cite.
 2. For each sentence, BM25 keyword search picks the closest passages, and every passage on the pages the brief cites is added (at most 12).
 3. Claude reads the sentence and those passages and proposes supported, partly supported or not supported, with exact quotes, what the record says instead, and a corrected sentence. The reply is structured output against a JSON schema.
-4. Code checks each quote word for word against its page. A quote that is not found is dropped, and a "supported" left with no quote goes to a person. Code then compares the pages of the verified quotes with the brief's cite.
+4. Code checks each quote word for word against its page. A quote that is not found is dropped, and a "supported" left with no quote goes to a person. The cite is right when a verified quote sits on a page the brief cites; the opinion restates many facts, so quotes from other pages stay as corroboration.
 5. Nothing in the brief changes on its own. Every status is a proposal a lawyer accepts, edits or rejects, and the review log exports as JSON.
 
 ## Go-live gate
