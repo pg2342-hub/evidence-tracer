@@ -1,0 +1,7 @@
+node_modules/
+out/
+app/dist/
+reports/
+__pycache__/
+*.egg-info/
+.env
