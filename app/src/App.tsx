@@ -211,7 +211,7 @@ export function App({ data }: { data: Data }) {
             </li>
             <li>
               Code checks each quote word for word against the page. A quote it cannot find is dropped, and a "supported" left with no quote goes to a
-              person. It then compares the pages of the quotes with the brief's cite.
+              person. The cite counts as right when a checked quote sits on a page the brief cites; quotes from other pages stay as corroboration.
             </li>
             <li>Nothing is changed in the brief. Every status is a proposal a lawyer accepts, edits or rejects, and the log exports.</li>
           </ol>
