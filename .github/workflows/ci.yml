@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install golive-gate==0.1.1 pyyaml
+      - name: The keyword-cutoff shortcut must be blocked (no-go)
+        run: |
+          npm run baseline
+          set +e
+          golive run evals/golive.baseline.yml --out reports/baseline
+          test $? -eq 1
+
+  gate:
+    # Grades the current code against the last recorded live Claude run. Fails the build on no-go.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install golive-gate==0.1.1 pyyaml
+      - name: Go-live gate on the recorded run
+        if: hashFiles('recordings/tracer.jsonl') != ''
+        run: |
+          npm run trace
+          set +e
+          golive run evals/golive.yml --out reports/recorded
+          code=$?
+          cat reports/recorded/report.md >> "$GITHUB_STEP_SUMMARY"
+          test "$code" -eq 0
+      - if: hashFiles('recordings/tracer.jsonl') == ''
+        run: echo "No recorded live run yet; run the 'Record a live run' workflow."

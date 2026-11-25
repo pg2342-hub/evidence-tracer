@@ -1,0 +1,407 @@
+# 40 sentences of the draft brief in data/brief/statement_of_facts.md, each labeled by hand against the record.
+# pages: every page of the opinion that supports the sentence (for wrong_detail, the page with the right fact).
+# fix_any: the corrected fact a proposed rewrite must contain (any one of these).
+cases:
+- id: s01
+  group: supported
+  title: Google was founded in 1998 by two Stanford University students, Larry Page and Sergey Brin.
+  input:
+    id: s01
+  expected:
+    group: supported
+    pages:
+    - 11
+    - 12
+- id: s02
+  group: supported
+  title: The court found that Google is a monopolist and that it has acted as one to maintain its monopoly, in violation of Section 2 of the Sherman Act.
+  input:
+    id: s02
+  expected:
+    group: supported
+    pages:
+    - 8
+- id: s03
+  group: wrong_detail
+  title: Measured by query volume, Google holds an 89.2% share of the market for general search services, which rises to 96.9% on mobile devices.
+  input:
+    id: s03
+  expected:
+    group: wrong_detail
+    pages:
+    - 18
+    - 160
+    fix_any:
+    - '94.9'
+- id: s04
+  group: supported
+  title: Bing's share is 5.5% of all queries and 1.3% of queries on mobile devices.
+  input:
+    id: s04
+  expected:
+    group: supported
+    pages:
+    - 18
+    - 160
+- id: s05
+  group: wrong_pin
+  title: Google's share of general search had risen from 80% to 89.2% by 2020.
+  input:
+    id: s05
+  expected:
+    group: wrong_pin
+    pages:
+    - 17
+- id: s06
+  group: supported
+  title: Google receives nine times more queries each day than all of its rivals combined, and nineteen times more on mobile devices.
+  input:
+    id: s06
+  expected:
+    group: supported
+    pages:
+    - 38
+    - 234
+- id: s07
+  group: not_in_record
+  title: Google processes more than 8.5 billion search queries per day worldwide.
+  input:
+    id: s07
+  expected:
+    group: not_in_record
+    pages: []
+- id: s08
+  group: wrong_detail
+  title: Nearly 20% of all Google queries are navigational queries.
+  input:
+    id: s08
+  expected:
+    group: wrong_detail
+    pages:
+    - 22
+    - 145
+    fix_any:
+    - 12%
+    - 12 percent
+- id: s09
+  group: supported
+  title: By 2009, Yahoo had stopped crawling the web and producing its own search results.
+  input:
+    id: s09
+  expected:
+    group: supported
+    pages:
+    - 15
+- id: s10
+  group: no_cite
+  title: In 1998, the year Google was founded, Yahoo already had hundreds of millions of users.
+  input:
+    id: s10
+  expected:
+    group: no_cite
+    pages:
+    - 15
+- id: s11
+  group: supported
+  title: Neeva, founded by a veteran Google Search executive, offered a subscription-based search engine that did not serve advertisements.
+  input:
+    id: s11
+  expected:
+    group: supported
+    pages:
+    - 15
+- id: s12
+  group: no_cite
+  title: By 2022, Neeva answered about 60% of queries with its own systems and relied on Bing for the rest.
+  input:
+    id: s12
+  expected:
+    group: no_cite
+    pages:
+    - 15
+- id: s13
+  group: wrong_detail
+  title: Neeva shut down in May 2023 and was acquired by Microsoft.
+  input:
+    id: s13
+  expected:
+    group: wrong_detail
+    pages:
+    - 15
+    fix_any:
+    - Snowflake
+- id: s14
+  group: supported
+  title: Bing generated less than $12 billion in advertising revenue in 2022.
+  input:
+    id: s14
+  expected:
+    group: supported
+    pages:
+    - 6
+- id: s15
+  group: supported
+  title: Google's advertising revenue grew from nearly $47 billion in 2014 to over $146 billion in 2021.
+  input:
+    id: s15
+  expected:
+    group: supported
+    pages:
+    - 6
+- id: s16
+  group: supported
+  title: In 2021, Google paid out a total of $26.3 billion in revenue share under its distribution contracts, an expense it books as traffic acquisition costs.
+  input:
+    id: s16
+  expected:
+    group: supported
+    pages:
+    - 105
+    - 232
+- id: s17
+  group: wrong_detail
+  title: That payment was more than ten times the company's other search-related costs combined, including research and development.
+  input:
+    id: s17
+  expected:
+    group: wrong_detail
+    pages:
+    - 232
+    fix_any:
+    - four times
+    - 4 times
+    - four-fold
+    - fourfold
+- id: s18
+  group: supported
+  title: On Android, 80% of all queries flow through a search access point that defaults to Google.
+  input:
+    id: s18
+  expected:
+    group: supported
+    pages:
+    - 34
+    - 232
+- id: s19
+  group: wrong_pin
+  title: As of 2019, about 2.3 billion Android devices were subject to Google's MADAs.
+  input:
+    id: s19
+  expected:
+    group: wrong_pin
+    pages:
+    - 123
+- id: s20
+  group: wrong_detail
+  title: For Samsung devices, 90% of the search revenue earned in 2016 flowed through default placements secured by the MADAs.
+  input:
+    id: s20
+  expected:
+    group: wrong_detail
+    pages:
+    - 34
+    fix_any:
+    - 80%
+    - 80 percent
+- id: s21
+  group: supported
+  title: From 2009 to 2014, Google paid Verizon a 40% revenue share, and from 2014 to 2020 it paid Verizon 20%.
+  input:
+    id: s21
+  expected:
+    group: supported
+    pages:
+    - 129
+- id: s22
+  group: wrong_pin
+  title: Queries on user-downloaded Chrome make up 20% of searches conducted in the United States.
+  input:
+    id: s22
+  expected:
+    group: wrong_pin
+    pages:
+    - 29
+    - 163
+    - 221
+    - 232
+- id: s23
+  group: supported
+  title: Queries entered through the Safari default account for 28% of all queries in the United States.
+  input:
+    id: s23
+  expected:
+    group: supported
+    pages:
+    - 107
+- id: s24
+  group: supported
+  title: Google receives almost 95% of all general search queries on iPhones.
+  input:
+    id: s24
+  expected:
+    group: supported
+    pages:
+    - 107
+- id: s25
+  group: wrong_detail
+  title: In 2022, Google's revenue share payment to Apple was an estimated $25 billion.
+  input:
+    id: s25
+  expected:
+    group: wrong_detail
+    pages:
+    - 107
+    - 245
+    fix_any:
+    - $20 billion
+    - 20 billion
+- id: s26
+  group: wrong_pin
+  title: The 2020 payment was equivalent to 17.5% of Apple's operating profit.
+  input:
+    id: s26
+  expected:
+    group: wrong_pin
+    pages:
+    - 107
+    - 245
+- id: s27
+  group: supported
+  title: Google pays Apple more in revenue share than it pays all of its other partners combined.
+  input:
+    id: s27
+  expected:
+    group: supported
+    pages:
+    - 107
+    - 245
+- id: s28
+  group: wrong_pin
+  title: Google projected that without the ISA it would lose around 65% of its revenue, even if it kept some users without the Safari default.
+  input:
+    id: s28
+  expected:
+    group: wrong_pin
+    pages:
+    - 108
+- id: s29
+  group: wrong_detail
+  title: Google's internal modeling projected that it would lose all of its iOS query volume if it were replaced as the default on Apple devices.
+  input:
+    id: s29
+  expected:
+    group: wrong_detail
+    pages:
+    - 33
+    - 34
+    fix_any:
+    - '60'
+    - 80%
+- id: s30
+  group: wrong_detail
+  title: Google estimated that those losses would cost it between $18.2 billion and $22.7 billion in net revenue.
+  input:
+    id: s30
+  expected:
+    group: wrong_detail
+    pages:
+    - 34
+    fix_any:
+    - '28.2'
+- id: s31
+  group: supported
+  title: In 2018, Apple hired the former head of Google Search, John Giannandrea.
+  input:
+    id: s31
+  expected:
+    group: supported
+    pages:
+    - 108
+- id: s32
+  group: not_in_record
+  title: In 2019, Apple's board formally voted against building its own general search engine.
+  input:
+    id: s32
+  expected:
+    group: not_in_record
+    pages: []
+- id: s33
+  group: wrong_pin
+  title: Apple's analysis showed that extending the ISA would bring it about $40 billion from Google over the next five years.
+  input:
+    id: s33
+  expected:
+    group: wrong_pin
+    pages:
+    - 116
+- id: s34
+  group: supported
+  title: Microsoft offered Apple 100% revenue share plus guarantees, but Apple's executives testified that Bing was never a realistic option to replace Google.
+  input:
+    id: s34
+  expected:
+    group: supported
+    pages:
+    - 255
+- id: s35
+  group: supported
+  title: Google's 2021 revenue share payment to Mozilla was over $400 million, or about 80% of Mozilla's operating budget.
+  input:
+    id: s35
+  expected:
+    group: supported
+    pages:
+    - 120
+- id: s36
+  group: not_in_record
+  title: In 2017, Google offered to pay Mozilla $1 billion a year to remain the default in Firefox.
+  input:
+    id: s36
+  expected:
+    group: not_in_record
+    pages: []
+- id: s37
+  group: no_cite
+  title: Google's market share in the text ads market, measured by ad spending, is 88%.
+  input:
+    id: s37
+  expected:
+    group: no_cite
+    pages:
+    - 70
+    - 193
+- id: s38
+  group: wrong_detail
+  title: Google's share of the text ads market was 88% in 2020, having grown steadily from 70% in 2016.
+  input:
+    id: s38
+  expected:
+    group: wrong_detail
+    pages:
+    - 193
+    fix_any:
+    - 80%
+    - 80 percent
+- id: s39
+  group: wrong_detail
+  title: Digital advertising revenue grew from about $20 billion in 2008 to over $200 billion in 2021, more than a hundred-fold increase.
+  input:
+    id: s39
+  expected:
+    group: wrong_detail
+    pages:
+    - 61
+    fix_any:
+    - ten-fold
+    - tenfold
+    - ten times
+    - 10-fold
+    - 10 times
+- id: s40
+  group: not_in_record
+  title: Google's own documents show that it raised text ad prices by 15% every year from 2016 to 2020 without telling advertisers.
+  input:
+    id: s40
+  expected:
+    group: not_in_record
+    pages: []

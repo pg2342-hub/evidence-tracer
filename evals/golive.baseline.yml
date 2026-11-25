@@ -1,0 +1,6 @@
+# The keyword-cutoff shortcut (npm run baseline first). Rule checks only; the gate must say no-go.
+cases: cases.yml
+checks: checks:checks
+agent: agent:keyword_cutoff
+gate: gate.yml
+runs: 1

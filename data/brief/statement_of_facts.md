@@ -1,0 +1,46 @@
+# Draft statement of facts (for checking against the record)
+
+Google was founded in 1998 by two Stanford University students, Larry Page and Sergey Brin. (Op. at 12.)
+The court found that Google is a monopolist and that it has acted as one to maintain its monopoly, in violation of Section 2 of the Sherman Act. (Op. at 8.)
+Measured by query volume, Google holds an 89.2% share of the market for general search services, which rises to 96.9% on mobile devices. (Op. at 160.)
+Bing's share is 5.5% of all queries and 1.3% of queries on mobile devices. (Op. at 160.)
+Google's share of general search had risen from 80% to 89.2% by 2020. (Op. at 19.)
+Google receives nine times more queries each day than all of its rivals combined, and nineteen times more on mobile devices. (Op. at 38.)
+Google processes more than 8.5 billion search queries per day worldwide. (Op. at 38.)
+Nearly 20% of all Google queries are navigational queries. (Op. at 22.)
+
+By 2009, Yahoo had stopped crawling the web and producing its own search results. (Op. at 15.)
+In 1998, the year Google was founded, Yahoo already had hundreds of millions of users.
+Neeva, founded by a veteran Google Search executive, offered a subscription-based search engine that did not serve advertisements. (Op. at 15.)
+By 2022, Neeva answered about 60% of queries with its own systems and relied on Bing for the rest.
+Neeva shut down in May 2023 and was acquired by Microsoft. (Op. at 15.)
+Bing generated less than $12 billion in advertising revenue in 2022. (Op. at 6.)
+Google's advertising revenue grew from nearly $47 billion in 2014 to over $146 billion in 2021. (Op. at 6.)
+
+In 2021, Google paid out a total of $26.3 billion in revenue share under its distribution contracts, an expense it books as traffic acquisition costs. (Op. at 105.)
+That payment was more than ten times the company's other search-related costs combined, including research and development. (Op. at 232.)
+On Android, 80% of all queries flow through a search access point that defaults to Google. (Op. at 232.)
+As of 2019, about 2.3 billion Android devices were subject to Google's MADAs. (Op. at 132.)
+For Samsung devices, 90% of the search revenue earned in 2016 flowed through default placements secured by the MADAs. (Op. at 34.)
+From 2009 to 2014, Google paid Verizon a 40% revenue share, and from 2014 to 2020 it paid Verizon 20%. (Op. at 129.)
+Queries on user-downloaded Chrome make up 20% of searches conducted in the United States. (Op. at 36.)
+
+Queries entered through the Safari default account for 28% of all queries in the United States. (Op. at 107.)
+Google receives almost 95% of all general search queries on iPhones. (Op. at 107.)
+In 2022, Google's revenue share payment to Apple was an estimated $25 billion. (Op. at 107.)
+The 2020 payment was equivalent to 17.5% of Apple's operating profit. (Op. at 99.)
+Google pays Apple more in revenue share than it pays all of its other partners combined. (Op. at 245.)
+Google projected that without the ISA it would lose around 65% of its revenue, even if it kept some users without the Safari default. (Op. at 110.)
+Google's internal modeling projected that it would lose all of its iOS query volume if it were replaced as the default on Apple devices. (Op. at 34.)
+Google estimated that those losses would cost it between $18.2 billion and $22.7 billion in net revenue. (Op. at 34.)
+In 2018, Apple hired the former head of Google Search, John Giannandrea. (Op. at 108.)
+In 2019, Apple's board formally voted against building its own general search engine. (Op. at 108.)
+Apple's analysis showed that extending the ISA would bring it about $40 billion from Google over the next five years. (Op. at 161.)
+Microsoft offered Apple 100% revenue share plus guarantees, but Apple's executives testified that Bing was never a realistic option to replace Google. (Op. at 255.)
+
+Google's 2021 revenue share payment to Mozilla was over $400 million, or about 80% of Mozilla's operating budget. (Op. at 120.)
+In 2017, Google offered to pay Mozilla $1 billion a year to remain the default in Firefox. (Op. at 120.)
+Google's market share in the text ads market, measured by ad spending, is 88%.
+Google's share of the text ads market was 88% in 2020, having grown steadily from 70% in 2016. (Op. at 193.)
+Digital advertising revenue grew from about $20 billion in 2008 to over $200 billion in 2021, more than a hundred-fold increase. (Op. at 61.)
+Google's own documents show that it raised text ad prices by 15% every year from 2016 to 2020 without telling advertisers. (Op. at 259.)

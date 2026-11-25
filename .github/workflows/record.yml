@@ -1,0 +1,70 @@
+name: Record a live run
+
+# Calls Claude for every sentence of the brief, 3 runs, saves the replies to recordings/,
+# grades them, and commits the recording. Needs the ANTHROPIC_API_KEY secret.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install golive-gate==0.1.1 pyyaml
+      - name: Live run (3 runs of 40 sentences, Claude)
+        run: |
+          test -n "$ANTHROPIC_API_KEY" || { echo "Set the ANTHROPIC_API_KEY repo secret first"; exit 1; }
+          rm -f recordings/tracer.jsonl
+          npm run record
+          test "$(wc -l < recordings/tracer.jsonl)" -eq 120 || { echo "incomplete recording, not committing"; exit 1; }
+      - name: Grade the recording
+        run: |
+          npm run trace
+          set +e
+          golive run evals/golive.yml --out reports/live
+          code=$?
+          set -e
+          cat reports/live/report.md >> "$GITHUB_STEP_SUMMARY"
+          test "$code" -ne 3
+      - name: Show every failed check with its reason
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p = pathlib.Path("reports/live/results.json")
+          if p.exists():
+              for c in json.loads(p.read_text())["cases"]:
+                  for r in c["runs"]:
+                      for cid, v in r["verdicts"].items():
+                          if v["result"] == "fail":
+                              print(f"{c['id']} run {r['run']} {cid}: {v['reason']}")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-run
+          path: |
+            reports/live
+            recordings
+            out
+      - name: Commit the recording
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add recordings
+          git commit -m "Record live run" || echo "nothing to commit"
+          git pull --rebase origin main
+          git push

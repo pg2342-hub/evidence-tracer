@@ -1,0 +1,6 @@
+# Recorded run: the TypeScript pipeline with the last live Claude replies (npm run trace first). No API key needed.
+cases: cases.yml
+checks: checks:checks
+agent: agent:recorded_agent
+gate: gate.yml
+runs: 3

@@ -1,0 +1,25 @@
+gate:
+  name: Brief-to-record tracing go-live gate
+  max_critical_failures: 0   # one wrong sentence shown as supported, or one quote not on its page, blocks go-live
+  # Each rule must hold on every one of the 3 runs.
+  rules:
+    - name: all sentences
+      min_pass: 36            # 36 of 40
+    - name: wrong details caught and corrected
+      group: wrong_detail
+      min_pass: all           # 10 of 10
+    - name: facts not in the record flagged
+      group: not_in_record
+      min_pass: all           # 4 of 4
+    - name: supported sentences left alone
+      group: supported
+      min_pass: 16            # 16 of 17; over-flagging holds rollout at partial
+      on_fail: partial
+    - name: wrong pin cites fixed
+      group: wrong_pin
+      min_pass: 5             # 5 of 6
+      on_fail: partial
+    - name: missing cites filled
+      group: no_cite
+      min_pass: all           # 3 of 3
+      on_fail: partial

@@ -1,0 +1,32 @@
+{
+  "name": "evidence-tracer",
+  "version": "0.1.0",
+  "description": "Links each factual claim in a legal brief to the page of the record that supports it, with a lawyer review screen and an accuracy check in CI",
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "vitest run",
+    "record": "tsx scripts/trace.ts --live --runs 3",
+    "trace": "tsx scripts/trace.ts --runs 3",
+    "baseline": "tsx scripts/trace.ts --baseline --runs 1",
+    "demo": "tsx scripts/build_demo.ts && vite build app && python3 scripts/demo_chrome.py docs/index.html --repo evidence-tracer"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.14.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.7",
+    "@types/react": "^19.3.1",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
+  },
+  "private": true,
+  "type": "module"
+}
