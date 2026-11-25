@@ -80,7 +80,7 @@ def status_right(case, out):
     return v(out["status"] in want, f"{out['status']}, expected {' or '.join(sorted(want))}")
 
 
-@checks.check("right_pages", text="At least one page the support (or a suggested cite) points at really supports the sentence; extra pages may restate the fact.")
+@checks.check("right_pages", text="The support includes a page that really supports the sentence (extra pages may restate the fact), and any suggested cite points only at such pages.")
 def right_pages(case, out):
     if case.expected["group"] not in ("supported", "wrong_pin", "no_cite"):
         return NA
@@ -88,6 +88,11 @@ def right_pages(case, out):
     good = set(case.expected["pages"])
     if not got:
         return v(False, "no support page found")
+    sugg = out["cite"].get("suggested")
+    if sugg:
+        pages = {int(n) for n in re.findall(r"\d+", sugg)}
+        if not pages <= good:
+            return v(False, f"suggests {sugg}; the sentence is supported on {sorted(good)}")
     return v(bool(set(got) & good), f"support on pages {got}; the sentence is supported on {sorted(good)}")
 
 

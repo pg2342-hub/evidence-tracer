@@ -30,6 +30,8 @@ export function guard(a: Assertion, shown: Passage[], reply: ModelReply, pages: 
   }
 
   const onCite = (pg: number) => !!a.cite?.includes(pg);
+  // The model lists its main support first; a suggested cite points there, and the rest read as see-also.
+  const primary = links[0]?.page;
   links.sort((x, y) => Number(onCite(y.page)) - Number(onCite(x.page)) || x.page - y.page);
   const supportPages = [...new Set(links.map((l) => l.page))].sort((x, y) => x - y);
   const citeOk = supportPages.some(onCite);
@@ -59,7 +61,7 @@ export function guard(a: Assertion, shown: Passage[], reply: ModelReply, pages: 
       written: a.cite,
       support_pages: supportPages,
       ok: citeOk,
-      suggested: supportPages.length && !citeOk ? formatCite(supportPages) : null,
+      suggested: primary !== undefined && !citeOk ? formatCite([primary]) : null,
     },
     candidates: shown.map((s) => s.id),
     guard: notes,

@@ -22,7 +22,7 @@ On the last live run (claude-opus-5-5, medium effort, 3 runs of 40 sentences, 12
 1. The opinion is split into passages of about 140 words that never cross a page, so every passage has one pin cite.
 2. For each sentence, BM25 keyword search picks the closest passages, and every passage on the pages the brief cites is added (at most 12).
 3. Claude reads the sentence and those passages and proposes supported, partly supported or not supported, with exact quotes, what the record says instead, and a corrected sentence. The reply is structured output against a JSON schema.
-4. Code checks each quote word for word against its page. A quote that is not found is dropped, and a "supported" left with no quote goes to a person. The cite is right when a verified quote sits on a page the brief cites; the opinion restates many facts, so quotes from other pages stay as corroboration.
+4. Code checks each quote word for word against its page. A quote that is not found is dropped, and a "supported" left with no quote goes to a person. The cite is right when a verified quote sits on a page the brief cites; the opinion restates many facts, so quotes from other pages stay as corroboration. When the cite is wrong or missing, the suggested cite points at the page of the model's main quote, and the gate checks that page against the hand labels.
 5. Nothing in the brief changes on its own. Every status is a proposal a lawyer accepts, edits or rejects, and the review log exports as JSON.
 
 ## Go-live gate
