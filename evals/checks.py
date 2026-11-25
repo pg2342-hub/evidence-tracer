@@ -57,10 +57,12 @@ def on_page(quote, page):
 
 @checks.check(
     "no_false_support",
-    text="A sentence with a wrong detail, or with nothing behind it in the record, is never shown as supported.",
+    text="A sentence with a wrong detail or nothing behind it in the record is never treated as supported, and a wrong pin cite is never passed as right.",
     critical=True,
 )
 def no_false_support(case, out):
+    if case.expected["group"] == "wrong_pin":
+        return v(out["status"] != "supported", "shown as supported with the wrong pin cite")
     if case.expected["group"] not in ("wrong_detail", "not_in_record"):
         return NA
     return v(out["status"] not in ("supported", "cite_fix"), f"shown as {out['status']}; the record does not support it as written")

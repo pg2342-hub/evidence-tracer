@@ -8,7 +8,9 @@ Checks every sentence of a draft brief against the court record. Each sentence c
 
 ## Result
 
-On the last live run (claude-opus-5-5, medium effort, 3 runs of 40 sentences, 120 calls), every sentence got the right status on every run and no wrong sentence was shown as supported. All 200 quotes the model gave were found word for word on their pages. Mean cost was $0.022 and mean latency 3.3 s per sentence. The keyword-cutoff shortcut passes 25 of 40 and calls 13 wrong sentences supported, so the same gate blocks it.
+On the last live run (claude-opus-5-5, medium effort, 3 runs of 40 sentences, 120 calls), every sentence got the right status on every run and no wrong sentence was shown as supported. All 200 quotes the model gave were found word for word on their pages. Mean cost was $0.022 and mean latency 3.3 s per sentence. The keyword-cutoff shortcut passes 25 of 40 and treats 13 wrong sentences as supported (10 marked supported, 3 marked as needing only a new cite), so the same gate blocks it.
+
+**One rule changed after the first live run, and here is why.** The cite check first required every quoted page to be a page the brief cites, and `right_pages` required every quoted page to be in the hand labels. The opinion restates many facts in its findings and again in its conclusions, so the model often quoted a second page that says the same thing, and correct cites were marked wrong. Under those first rules the same recorded replies score 29, 29 and 28 of 40 (no-go). The rules now are: the cite is right when a verified quote sits on a page the brief cites, and `right_pages` passes when the quoted pages include a hand-labeled page. Most extra pages restate the fact word for word (for example Op. at 209 and 107 on Safari's 28%); a few are only partly on point (Op. at 15 for s01, 160 for s05, 118 for s34), which is why quotes on cited pages are listed first and a lawyer still approves every link. At the same time the critical check was tightened: a wrong pin cite shown as supported now blocks go-live.
 
 ## What it runs on
 

@@ -154,8 +154,8 @@ export function App({ data }: { data: Data }) {
           <p className="point">
             A brief that cites the record wrong costs credibility with the court, and checking every sentence by hand is slow work on a {data.totalPages}-page
             opinion. A tool that does it has one job it must never get wrong: calling a sentence supported when the record says something else.
-            Here code holds that line. A link counts only if the quote is found word for word on the cited page; a keyword match that cannot read
-            the sentence called {falseSupport} wrong sentences supported and is blocked by the same gate.
+            Here code holds that line. A link counts only if the quote is found word for word on the page it points to; a keyword match that cannot read
+            the sentence treated {falseSupport} wrong sentences as supported and is blocked by the same gate.
           </p>
 
           <h2 id="map">Where each sentence lands in the record</h2>
